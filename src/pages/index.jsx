@@ -67,10 +67,7 @@ function HomePage(props) {
   // 跳转到扫码页面
   const handleScanAdd = () => {
     setShowAddModal(false);
-    props.$w.utils.navigateTo({
-      pageId: 'scan',
-      params: {}
-    });
+    props.$w.utils.navigateTo('scan', {});
   };
 
   // 语音添加
@@ -223,11 +220,8 @@ function HomePage(props) {
 
   // 查看产品详情
   const handleProductClick = product => {
-    props.$w.utils.navigateTo({
-      pageId: 'detail',
-      params: {
-        id: product.id
-      }
+    props.$w.utils.navigateTo('detail', {
+      id: product.id
     });
   };
 
