@@ -27,16 +27,12 @@ const tabs = [{
 }];
 function TabBar(props) {
   const {
-    activeTab = 'home',
-    onAddClick // 添加按钮的回调函数
+    activeTab = 'home'
   } = props;
   const handleTabClick = tabId => {
     // 处理添加按钮
     if (tabId === 'add') {
-      // 如果有 onAddClick 回调则调用，否则直接导航到扫码页
-      if (onAddClick) {
-        onAddClick();
-      }
+      // 添加按钮逻辑由父组件处理
       return;
     }
 
@@ -60,7 +56,7 @@ function TabBar(props) {
         // 中心添加按钮样式
         if (tab.isCenter) {
           return <div key={tab.id} className="flex flex-col items-center -mt-4">
-                <button onClick={() => handleTabClick(tab.id)} className="w-14 h-14 rounded-full bg-[#E85D04] text-white shadow-lg flex items-center justify-center active:scale-95 transition-transform" style={{
+                <button className="w-14 h-14 rounded-full bg-[#E85D04] text-white shadow-lg flex items-center justify-center active:scale-95 transition-transform" style={{
               minWidth: '56px',
               minHeight: '56px'
             }} aria-label="添加物品">

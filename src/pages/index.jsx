@@ -67,7 +67,10 @@ function HomePage(props) {
   // 跳转到扫码页面
   const handleScanAdd = () => {
     setShowAddModal(false);
-    props.$w.utils.navigateTo('scan', {});
+    props.$w.utils.navigateTo({
+      pageId: 'scan',
+      params: {}
+    });
   };
 
   // 语音添加
@@ -220,8 +223,11 @@ function HomePage(props) {
 
   // 查看产品详情
   const handleProductClick = product => {
-    props.$w.utils.navigateTo('detail', {
-      id: product.id
+    props.$w.utils.navigateTo({
+      pageId: 'detail',
+      params: {
+        id: product.id
+      }
     });
   };
 
@@ -540,7 +546,7 @@ function HomePage(props) {
         </div>}
 
       {/* 底部导航栏 */}
-      <TabBar activeTab="home" onAddClick={() => setShowAddModal(true)} />
+      <TabBar activeTab="home" />
     </div>;
 }
 export default HomePage;

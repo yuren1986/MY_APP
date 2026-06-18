@@ -161,8 +161,11 @@ function ScanPage(props) {
 
       // 关闭弹窗，返回首页并刷新数据
       setScanResult(null);
-      props.$w.utils.navigateTo('index', {
-        _refresh: Date.now()
+      props.$w.utils.navigateTo({
+        pageId: 'index',
+        params: {
+          _refresh: Date.now()
+        }
       });
     } else {
       toast({
@@ -176,8 +179,11 @@ function ScanPage(props) {
 
   // 返回
   const handleBack = () => {
-    props.$w.utils.navigateTo('index', {
-      _refresh: Date.now()
+    props.$w.utils.navigateTo({
+      pageId: 'index',
+      params: {
+        _refresh: Date.now()
+      }
     });
   };
   return <div className="min-h-screen bg-black flex flex-col">
