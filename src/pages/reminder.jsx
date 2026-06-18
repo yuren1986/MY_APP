@@ -22,11 +22,8 @@ function ReminderPage(props) {
       description: `正在打开 ${reminder.productName} 的详情页`,
       duration: 2000
     });
-    props.$w.utils.navigateTo({
-      pageId: 'detail',
-      params: {
-        id: reminder.productId
-      }
+    props.$w.utils.navigateTo('detail', {
+      id: reminder.productId
     });
   };
 

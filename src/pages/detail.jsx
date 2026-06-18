@@ -42,11 +42,8 @@ function DetailPage(props) {
   // 返回
   const handleBack = () => {
     // 返回首页并刷新数据
-    props.$w.utils.navigateTo({
-      pageId: 'index',
-      params: {
-        _refresh: Date.now()
-      }
+    props.$w.utils.navigateTo('index', {
+      _refresh: Date.now()
     });
   };
 
@@ -94,11 +91,8 @@ function DetailPage(props) {
         duration: 2000
       });
       setShowDeleteConfirm(false);
-      props.$w.utils.navigateTo({
-        pageId: 'index',
-        params: {
-          _refresh: Date.now()
-        }
+      props.$w.utils.navigateTo('index', {
+        _refresh: Date.now()
       });
     } else {
       toast({

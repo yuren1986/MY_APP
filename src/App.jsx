@@ -61,15 +61,23 @@ function App() {
     };
   }, [parseHash]);
 
-  // 全局导航函数
-  const navigateTo = (pageId, params = {}) => {
-    const paramString = Object.keys(params).length > 0 ? '?' + Object.entries(params).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&') : '';
+  // 全局导航函数 - 支持两种调用方式
+  const navigateTo = (pageIdOrOptions, params = {}) => {
+    // 支持对象形式调用：navigateTo({ pageId: 'xxx', params: {} })
+    // 也支持直接调用：navigateTo('xxx', {})
+    let pageId = pageIdOrOptions;
+    let extraParams = params;
+    if (typeof pageIdOrOptions === 'object' && pageIdOrOptions !== null) {
+      pageId = pageIdOrOptions.pageId;
+      extraParams = pageIdOrOptions.params || {};
+    }
+    const paramString = Object.keys(extraParams).length > 0 ? '?' + Object.entries(extraParams).map(([k, v]) => `${k}=${encodeURIComponent(v)}`).join('&') : '';
     window.location.hash = `#${pageId}${paramString}`;
     // 立即更新状态，不等待 hashchange 事件
     const mappedPage = PAGE_MAP[pageId] || pageId;
     setCurrentPage(mappedPage);
-    if (Object.keys(params).length > 0) {
-      setPageParams(params);
+    if (Object.keys(extraParams).length > 0) {
+      setPageParams(extraParams);
     } else {
       setPageParams({});
     }
