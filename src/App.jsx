@@ -9,6 +9,7 @@ import SettingsPage from './pages/settings';
 
 // 页面名称映射（兼容 home 和 index）
 const PAGE_MAP = {
+  '': 'index',
   'home': 'index',
   'index': 'index',
   'scan': 'scan',
